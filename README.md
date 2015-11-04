@@ -4,6 +4,8 @@ Custom charts for nvd3.
 ## Gauge chart
 Simple gauge, wants a single value as data.
 
+![](https://raw.githubusercontent.com/enplore/nvd3-charts/master/gauge.png)
+
 ```
 nv.addGraph(function() {
     var chart = nv.models.gaugeChart()
