@@ -1,8 +1,8 @@
 # nvd3-charts
-Custom charts for nvd3.
+Custom responsive charts for nvd3 (gauge, bubble, radar).
 
 ## Gauge chart
-Simple gauge, wants a single value as data.
+Simple gauge, wants a single value as data. Use a CSS width of 190px to keep it together (not responsive).
 
 ```
 nv.addGraph(function() {
@@ -21,7 +21,7 @@ nv.addGraph(function() {
 ```
 
 ## Packed bubble chart
-Based on http://bl.ocks.org/mbostock/4063269, wants an array of objects. Responsive.
+Based on http://bl.ocks.org/mbostock/4063269. Accepts the same data structure. Responsive. Will reveal child node when clicked.
 
 ```
 nv.addGraph(function() {
@@ -33,7 +33,29 @@ nv.addGraph(function() {
               .range(['#88ac67', "#f78f20", "#db4e4e"]));
 
     d3.select('#bubble-chart svg')
-        .datum(bubbleData())
+        .datum(bubbleData))
+        .call(chart);
+
+    nv.utils.windowResize(chart.update);
+    return chart;
+});
+```
+
+## Radar chart
+Based on http://bl.ocks.org/nbremer/6506614. Accepts the same data structure. Nodes are linked if the data point's "link" property is set.
+
+```
+nv.addGraph(function() {
+    var chart = nv.models.radarChart()
+        .valueFormat(function (d) { return d.toFixed(2); })
+        .min(min)
+        .max(max)
+        .margin({ top: 10 })
+        .color(d3.scale.linear()
+            .range(['#88ac67', "#f78f20", "#db4e4e"]));
+
+    d3.select('#radar-chart svg')
+        .datum(radarData)
         .call(chart);
 
     nv.utils.windowResize(chart.update);

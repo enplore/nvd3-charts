@@ -22,8 +22,10 @@ nv.models.radarChart = function() {
         ;
 
     tooltip
-        .headerEnabled(false)
-        .duration(0);
+        .duration(0)
+        .valueFormatter(function(d, i) {
+            return radar.valueFormat()(d, i);
+        });
 
     //============================================================
     // Chart function
@@ -163,11 +165,13 @@ nv.models.radarChart = function() {
         chart.update();
     });
 
-    radar.dispatch.on('elementMouseover.tooltip', function(evt) {
+    radar.dispatch.on('elementMouseover.tooltip', function (evt) {
+        evt['value'] = evt.data.seriesName;
+
         evt['series'] = {
-            key: evt.data.name,
-            value: evt.data,
-            color: evt.color
+            key: evt.data.key,
+            value: evt.data.value,
+            color: evt.data.color
         };
 
         tooltip.data(evt).hidden(false);
@@ -177,8 +181,14 @@ nv.models.radarChart = function() {
         tooltip.hidden(true);
     });
 
-    radar.dispatch.on('elementMousemove.tooltip', function(evt) {
+    radar.dispatch.on('elementMousemove.tooltip', function (evt) {
         tooltip.position({ top: d3.event.pageY, left: d3.event.pageX })();
+    });
+
+    radar.dispatch.on('chartClick', function (evt) {
+        if (evt.data.link) {
+            window.location.href = evt.data.link;
+        }
     });
 
     //============================================================

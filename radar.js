@@ -206,7 +206,11 @@ nv.models.radar = function() {
                         x: availableWidth / 2 + radius * delta * factor * Math.sin(i * radians / allAxis.length),
                         y: availableHeight / 2 - radius * delta * factor * Math.cos(i * radians / allAxis.length),
                         series: d.series,
-                        color: d.color
+                        color: d.color,
+                        value: v.value,
+                        key: v.axis,
+                        seriesName: d.key,
+                        link: v.link || null
                     };
                 });
             };
@@ -256,6 +260,7 @@ nv.models.radar = function() {
                 .enter()
                 .append('circle')
                 .attr('class', 'series-point')
+                .attr('cursor', function (d) { return d.link ? 'pointer' : 'default'; })
                 .attr('r', nodeRadius)
                 .on('mouseover', function (d) {
                     d3.select(this).classed('hover', true);
@@ -268,6 +273,11 @@ nv.models.radar = function() {
                     d3.select(this).classed('hover', false);
 
                     dispatch.elementMouseout({
+                        data: d
+                    });
+                })
+                .on('mousemove', function(d) {
+                    dispatch.elementMousemove({
                         data: d
                     });
                 })
