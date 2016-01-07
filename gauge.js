@@ -58,9 +58,6 @@ nv.models.gauge = function() {
             var g_label = gEnter.append('g').attr('class', 'nv-gaugeLabel');
 
             wrap.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
-            g_needle.attr('transform', 'translate(' + cx + ',' + (cy - 0.08 * radius) + ')');
-            g_title.attr('transform', 'translate(' + cx + ',' + (cy / 2 + fontSize / 2) + ')');
-            g_label.attr('transform', 'translate(' + cx + ',' + (cy + radius / 2 - fontSize*0.9) + ')');
 
             // draw gauge bands
             for (var i in zones) {
@@ -83,6 +80,18 @@ nv.models.gauge = function() {
                 .attr('cx', 0)
                 .attr('cy', 0)
                 .attr('r', 0.115 * radius);
+
+            wrap.selectAll('.nv-gaugeBands path')
+                .attr("transform", function () { return "translate(" + cx + ", " + (cy - 0.08 * radius) + ") rotate(270)" });
+
+            wrap.select('.nv-gaugeNeedle')
+                .attr('transform', 'translate(' + cx + ',' + (cy - 0.08 * radius) + ')');
+
+            wrap.select('.nv-gaugeTitle')
+                .attr('transform', 'translate(' + cx + ',' + (cy / 2 + fontSize / 2) + ')');
+
+            wrap.select('.nv-gaugeLabel')
+                .attr('transform', 'translate(' + cx + ',' + (cy + radius / 2 - fontSize * 0.9) + ')');
 
             // draw title
             if (title) {
