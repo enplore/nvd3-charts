@@ -15,10 +15,10 @@ nv.models.radar = function() {
         , title = false
         , min = null
         , max = null
+        , stepSize = null
         , radius = 5
         , factor = 1
         , factorLegend = 1
-        , levels = 10
         , opacityArea = 0.5
         , nodeRadius = 4
         , dispatch = d3.dispatch('chartClick', 'renderEnd', 'elementMouseover', 'elementMouseout', 'elementMousemove')
@@ -61,7 +61,7 @@ nv.models.radar = function() {
 
             nv.utils.initSVG(container);
 
-            var step = (max - min) / levels;
+            var step = stepSize || ((max - min) / 10);
             var adjustedMax = max + step;
             var range = d3.range(min, adjustedMax, step);
             var allAxis = data[0].values.map(function (d) { return d.axis; });
@@ -318,6 +318,7 @@ nv.models.radar = function() {
         id:         {get: function(){return id;}, set: function(_){id=_;}},
         min:         {get: function(){return min;}, set: function(_){min=_;}},
         max: { get: function () { return max; }, set: function (_) { max = _; } },
+        stepSize: { get: function () { return stepSize; }, set: function (_) { stepSize = _; } },
         radius: { get: function () { return radius; }, set: function (_) { radius = _; } },
         factor: { get: function () { return factor; }, set: function (_) { factor = _; } },
         factorLegend: { get: function () { return factorLegend; }, set: function (_) { factorLegend = _; } },
