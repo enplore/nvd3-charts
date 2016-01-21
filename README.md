@@ -1,6 +1,8 @@
 # nvd3-charts
 Custom responsive charts for nvd3 (gauge, bubble, radar).
 
+By Johan Johansson at Enplore (https://github.com/enplore/nvd3-charts.git).
+
 ## Gauge chart
 Simple gauge, wants a single value as data. Use a CSS width of 190px to keep it together (not responsive).
 
@@ -52,6 +54,7 @@ nv.addGraph(function() {
         .valueFormat(function (d) { return d.toFixed(2); })
         .min(min)
         .max(max)
+        .stepSize(tickStep)
         .margin({ top: 10 })
         .color(d3.scale.linear()
             .range(['#88ac67', "#f78f20", "#db4e4e"]));

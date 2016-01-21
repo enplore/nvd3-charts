@@ -1,6 +1,6 @@
 {
   "name": "nvd3-charts",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Custom responsive charts for nvd3.",
   "repository": {
     "type": "git",
