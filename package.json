@@ -1,7 +1,7 @@
 {
   "name": "nvd3-charts",
   "version": "0.0.3",
-  "description": "Custom responsive charts for nvd3.",
+  "description": "Custom charts for nvd3.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/enplore/nvd3-charts.git"

@@ -1,11 +1,23 @@
 # nvd3-charts
-Custom responsive charts for nvd3 (gauge, bubble, radar).
+Custom charts for nvd3.
 
 By Johan Johansson/Enplore (https://github.com/enplore/nvd3-charts.git).
 
 Current version checked OK with nvd3 1.8.3 and d3 3.5.16.
 
-## Gauge chart
+## Install
+### Manually
+Download the scripts and include them after including d3 and nvd3 scripts. To use, just use nv.models.xxx as per below.
+
+### With npm
+The repo is not published on npmjs, however you can still install it with npm from github:
+
+`npm install --save github:enplore/nvd3-charts`
+
+Then `@import 'nvd3-charts/gaugeChart'` after importing d3 and nvd3 packages. To use, just use nv.models.xxx as per below.
+
+## Use
+### Gauge chart
 Simple gauge, wants a single value as data. Use a CSS width of 190px to keep it together (not responsive).
 
 ![](https://raw.githubusercontent.com/enplore/nvd3-charts/master/gauge.png)
@@ -26,7 +38,7 @@ nv.addGraph(function() {
 });
 ```
 
-## Packed bubble chart
+### Packed bubble chart (hierarchical)
 Based on http://bl.ocks.org/mbostock/4063269. Accepts the same data structure. Responsive. Will reveal child node when clicked.
 
 ```
@@ -47,7 +59,7 @@ nv.addGraph(function() {
 });
 ```
 
-## Radar chart
+### Radar chart
 Based on http://bl.ocks.org/nbremer/6506614. Accepts the same data structure. Nodes are linked if the data point's "link" property is set.
 
 ```
