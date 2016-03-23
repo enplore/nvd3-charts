@@ -1,7 +1,9 @@
 # nvd3-charts
 Custom responsive charts for nvd3 (gauge, bubble, radar).
 
-By Johan Johansson at Enplore (https://github.com/enplore/nvd3-charts.git).
+By Johan Johansson/Enplore (https://github.com/enplore/nvd3-charts.git).
+
+Current version checked OK with nvd3 1.8.3 and d3 3.5.16.
 
 ## Gauge chart
 Simple gauge, wants a single value as data. Use a CSS width of 190px to keep it together (not responsive).

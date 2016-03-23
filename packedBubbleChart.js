@@ -89,7 +89,7 @@ nv.models.packedBubbleChart = function() {
     });
 
     packedBubble.dispatch.on('elementMousemove.tooltip', function(evt) {
-        tooltip.position({ top: d3.event.pageY, left: d3.event.pageX })();
+        tooltip.position();
     });
 
     //============================================================
