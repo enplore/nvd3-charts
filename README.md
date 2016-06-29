@@ -14,7 +14,7 @@ The repo is not published on npmjs, however you can still install it with npm fr
 
 `npm install --save github:enplore/nvd3-charts`
 
-Then `@import 'nvd3-charts/gaugeChart'` after importing d3 and nvd3 packages. To use, just use nv.models.xxx as per below.
+Then `import 'nvd3-charts/gaugeChart';` after importing d3 and nvd3 packages. To use, just use nv.models.xxx as per below.
 
 ## Use
 ### Gauge chart
