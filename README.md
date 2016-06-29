@@ -18,7 +18,7 @@ Then `import 'nvd3-charts/gaugeChart';` after importing d3 and nvd3 packages. To
 
 ## Use
 ### Gauge chart
-Simple gauge, wants a single value as data. Use a CSS width of 190px to keep it together (not responsive).
+Simple gauge, wants a single value as data. Use CSS widths to adjust size (not responsive).
 
 ![](https://raw.githubusercontent.com/enplore/nvd3-charts/master/gauge.png)
 
