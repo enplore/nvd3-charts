@@ -20,6 +20,8 @@ Then `import 'nvd3-charts/gaugeChart';` after importing d3 and nvd3 packages. To
 ### Gauge chart
 Simple gauge, wants a single value as data. Use CSS widths to adjust size (not responsive).
 
+Live demo: http://codepen.io/anon/pen/OXprXo
+
 ![](https://raw.githubusercontent.com/enplore/nvd3-charts/master/gauge.png)
 
 ```
@@ -29,7 +31,7 @@ nv.addGraph(function() {
         .min(0)
         .max(1);
 
-    d3.select('#gauge-chart-1 svg')
+    d3.select('#gauge-chart svg')
         .datum([Math.random()])
         .call(chart);
 
@@ -39,7 +41,9 @@ nv.addGraph(function() {
 ```
 
 ### Packed bubble chart (hierarchical)
-Based on http://bl.ocks.org/mbostock/4063269. Accepts the same data structure. Responsive. Will reveal child node when clicked.
+Based on http://bl.ocks.org/mbostock/4063269. Accepts a similar data structure (see demo for exact structure). Responsive. Will reveal child node when clicked.
+
+Live demo: http://codepen.io/anon/pen/yJMGVB
 
 ```
 nv.addGraph(function() {
@@ -51,7 +55,7 @@ nv.addGraph(function() {
               .range(['#88ac67', "#f78f20", "#db4e4e"]));
 
     d3.select('#bubble-chart svg')
-        .datum(bubbleData))
+        .datum(bubbleData)
         .call(chart);
 
     nv.utils.windowResize(chart.update);
@@ -60,7 +64,9 @@ nv.addGraph(function() {
 ```
 
 ### Radar chart
-Based on http://bl.ocks.org/nbremer/6506614. Accepts the same data structure. Nodes are linked if the data point's "link" property is set.
+Based on http://bl.ocks.org/nbremer/6506614. Accepts a similar data structure (see demo for exact structure). Nodes are linked if the data point's "link" property is set.
+
+Live demo: http://codepen.io/anon/pen/GqWPyX
 
 ```
 nv.addGraph(function() {
