@@ -3,7 +3,7 @@ Custom charts for nvd3.
 
 By Johan Johansson/Enplore (https://github.com/enplore/nvd3-charts.git).
 
-Current version checked OK with nvd3 1.8.3 and d3 3.5.16.
+Current version checked OK with nvd3 1.8.4 and d3 3.5.17.
 
 ## Install
 ### Manually
