@@ -14,6 +14,8 @@ nv.models.gauge = function() {
         , title = false
         , min = 0
         , max = 100
+        , zoneLimit1 = 0.6
+        , zoneLimit2 = 0.8
         , dispatch = d3.dispatch('chartClick', 'renderEnd')
         ;
 
@@ -43,9 +45,9 @@ nv.models.gauge = function() {
             var fontSize = Math.round(Math.min(availableWidth, availableHeight) / 9);
 
             var zones = [
-                { from: min, to: min + range * 0.6 },
-                { from: min + range * 0.6, to: min + range * 0.8 },
-                { from: min + range * 0.8, to: max }
+                { from: min, to: min + range * zoneLimit1 },
+                { from: min + range * zoneLimit1, to: min + range * zoneLimit2 },
+                { from: min + range * zoneLimit2, to: max }
             ];
 
             // Setup containers and skeleton of chart
@@ -192,7 +194,8 @@ nv.models.gauge = function() {
         id:         {get: function(){return id;}, set: function(_){id=_;}},
         min:         {get: function(){return min;}, set: function(_){min=_;}},
         max:         {get: function(){return max;}, set: function(_){max=_;}},
-
+        zoneLimit1: {get: function(){return zoneLimit1;}, set: function(_){zoneLimit1=_;}},
+        zoneLimit2: {get: function(){return zoneLimit2;}, set: function(_){zoneLimit2=_;}},
 
         // options that require extra logic in the setter
         margin: {get: function(){return margin;}, set: function(_){
