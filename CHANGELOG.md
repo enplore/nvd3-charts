@@ -1,6 +1,9 @@
 # Change Log
+## [0.0.6] - 2017-03-15
+- Fixed needle no longer pointing passed the maximum value.
+
 ## [0.0.5] - 2017-02-07
-- Added zone limit variables to allow custom color ranges
+- Added zone limit variables to allow custom color ranges.
 
 ## [0.0.3] - 2016-03-23
 - Fixed tooltip positioning in radar chart with nvd3 1.8.4.
