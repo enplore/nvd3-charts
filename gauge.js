@@ -137,6 +137,10 @@ nv.models.gauge = function() {
             }
 
             function buildNeedlePath(value, range, cx, cy, min, max, radius) {
+                if (value > max) {
+                    value = max;
+                }
+
                 var delta = range / 1;
                 var tailValue = value - (range * (1/(270/360)) / 2);
 
