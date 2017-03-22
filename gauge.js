@@ -59,6 +59,8 @@ nv.models.gauge = function() {
             var g_title = gEnter.append('g').attr('class', 'nv-gaugeTitle');
             var g_needle = gEnter.append('g').attr('class', 'nv-gaugeNeedle');
             var g_label = gEnter.append('g').attr('class', 'nv-gaugeLabel');
+            var g_minLabel = gEnter.append('g').attr('class', 'nv-gaugeMinLabel');
+            var g_maxLabel = gEnter.append('g').attr('class', 'nv-gaugeMaxLabel');
 
             wrap.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
