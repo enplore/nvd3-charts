@@ -29,7 +29,9 @@ nv.addGraph(function() {
     var chart = nv.models.gaugeChart()
         .title('Gauge')
         .min(0)
-        .max(1);
+        .max(1)
+        .zoneLimit1(0.25)
+        .zoneLimit1(0.75);
 
     d3.select('#gauge-chart svg')
         .datum([Math.random()])
