@@ -12,6 +12,7 @@ nv.models.gauge = function() {
         , color = nv.utils.getColor(['#88ac67', '#f78f20', '#db4e4e'])
         , valueFormat = d3.format(',.2f')
         , title = false
+        , showMinMaxLabels = false
         , min = 0
         , max = 100
         , zoneLimit1 = 0.6
@@ -95,6 +96,14 @@ nv.models.gauge = function() {
             wrap.select('.nv-gaugeLabel')
                 .attr('transform', 'translate(' + cx + ',' + (cy + radius / 2 - fontSize * 0.9) + ')');
 
+            if (showMinMaxLabels) {
+                wrap.select('.nv-gaugeMinLabel')
+                    .attr('transform', 'translate(' + (cx - radius / 2.6 - fontSize * 0.9) + ',' + (cy + radius / 1.35 - fontSize * 0.9) + ')');
+
+                wrap.select('.nv-gaugeMaxLabel')
+                    .attr('transform', 'translate(' + (cx + radius / 1.25 - fontSize * 0.9) + ',' + (cy + radius / 1.35 - fontSize * 0.9) + ')');
+            }
+
             // draw title
             if (title) {
                 g_title.append("text")
@@ -112,7 +121,22 @@ nv.models.gauge = function() {
                 .text(valueFormat)
                 .style("font-size", fontSize*0.9 + "px");
 
-            //
+            if (showMinMaxLabels) {
+                g_minLabel.append("text")
+                    .data(data)
+                    .attr("dy", fontSize / 2)
+                    .attr("text-anchor", "start")
+                    .text(valueFormat(min))
+                    .style("font-size", fontSize*0.45 + "px");
+
+                g_maxLabel.append("text")
+                    .data(data)
+                    .attr("dy", fontSize / 2)
+                    .attr("text-anchor", "end")
+                    .text(valueFormat(max))
+                    .style("font-size", fontSize*0.45 + "px");
+            }
+
             container.on('click', function(d,i) {
                 dispatch.chartClick({
                     data: d,
@@ -194,6 +218,7 @@ nv.models.gauge = function() {
         width:      {get: function(){return width;}, set: function(_){width=_;}},
         height:     {get: function(){return height;}, set: function(_){height=_;}},
         title:      {get: function(){return title;}, set: function(_){title=_;}},
+        showMinMaxLabels:    {get: function(){return showMinMaxLabels;}, set: function(_){showMinMaxLabels=_;}},
         valueFormat:    {get: function(){return valueFormat;}, set: function(_){valueFormat=_;}},
         id:         {get: function(){return id;}, set: function(_){id=_;}},
         min:         {get: function(){return min;}, set: function(_){min=_;}},
