@@ -31,7 +31,7 @@ nv.addGraph(function() {
         .min(0)
         .max(1)
         .zoneLimit1(0.25)
-        .zoneLimit1(0.75);
+        .zoneLimit2(0.75);
 
     d3.select('#gauge-chart svg')
         .datum([Math.random()])
