@@ -200,7 +200,7 @@ nv.models.radar = function() {
 
             function getSeriesNodeData(d) {
                 return d.values.map(function (v, i) {
-                    var delta = (v.value - min) / (range.slice(-1).pop() - min);
+                    var delta = (v.value - min) / (adjustedMax - min);
 
                     return {
                         x: availableWidth / 2 + radius * delta * factor * Math.sin(i * radians / allAxis.length),
