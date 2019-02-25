@@ -26,6 +26,21 @@ nv.models.radar = function() {
 
 
     //============================================================
+    // Hack to fix Moz Firefox getBBox error when display:none
+    //------------------------------------------------------------
+    function getElemBBox(svgElement) {
+        try {
+          return svgElement.getBBox();
+        }
+        catch (TypeError) {
+          return {
+              width: svgElement.offsetWidth,
+              height: svgElement.offsetHeight
+          }
+        }
+    }
+
+    //============================================================
     // chart function
     //------------------------------------------------------------
 
@@ -180,7 +195,7 @@ nv.models.radar = function() {
             axisLabels.exit().remove();
 
             g_axisLabels.selectAll('.axis-label')
-                .attr("x", function (d, i) { return availableWidth / 2 + radius * Math.sin(i * radians / allAxis.length) + (this.getBBox().width / 1.5) * Math.sin(i * radians / allAxis.length); })
+                .attr("x", function (d, i) { return availableWidth / 2 + radius * Math.sin(i * radians / allAxis.length) + (getElemBBox(this).width / 1.5) * Math.sin(i * radians / allAxis.length); })
                 .attr("y", function (d, i) { return availableHeight / 2 - radius * Math.cos(i * radians / allAxis.length) - 20 * Math.cos(i * radians / allAxis.length); });
 
             // series
@@ -200,8 +215,7 @@ nv.models.radar = function() {
 
             function getSeriesNodeData(d) {
                 return d.values.map(function (v, i) {
-                    var delta = (v.value - min) / (adjustedMax - min);
-
+                    var delta = (v.value - min) / (range.slice(-1).pop() - min);
                     return {
                         x: availableWidth / 2 + radius * delta * factor * Math.sin(i * radians / allAxis.length),
                         y: availableHeight / 2 - radius * delta * factor * Math.cos(i * radians / allAxis.length),
